@@ -1,6 +1,6 @@
 # GraphQL Project Tech Stack Study Guide
 
-## 🎯 What This Guide Covers
+## 🎯 What This Guide Covers (and dont cover)
 
 This study guide explains every technology used in our GraphQL project in simple, everyday language. No confusing technical jargon - just clear explanations of what each tool does and why we use it.
 
