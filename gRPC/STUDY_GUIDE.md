@@ -86,10 +86,19 @@ Client Request → gRPC Server → Service Handler → gRPC Response → Client
 ### **Q: What is a `.proto` file?**
 **A**: It's the heart of a gRPC service. It's a text file where you define all the services, methods (RPCs), and message structures. It's the single source of truth for your API's contract.
 
+**Purpose of each component**:
+- **`syntax = "proto3";`** (line 1 in `proto/greeter.proto`): Specifies which version of Protocol Buffers language to use
+- **`package greeter;`** (line 3 in `proto/greeter.proto`): Creates a namespace to avoid naming conflicts with other proto files
+- **`service Greeter`** (lines 6-9 in `proto/greeter.proto`): Defines the API interface - what methods clients can call
+- **`rpc SayHello`** (line 8 in `proto/greeter.proto`): Defines a specific method that takes a HelloRequest and returns a HelloReply
+- **`message HelloRequest`** (lines 12-15 in `proto/greeter.proto`): Defines the structure of data sent TO the server
+- **`message HelloReply`** (lines 18-20 in `proto/greeter.proto`): Defines the structure of data sent FROM the server back to the client
+- **Field numbers** (like `= 1` on lines 13 and 19 in `proto/greeter.proto`): Used for efficient binary encoding - sending numbers instead of field names saves bandwidth
+
 ### **Q: What's the difference between a `service` and a `message`?**
 **A**:
-- **`message`**: Defines the *data structure*. It's like a TypeScript `interface` or a class. For example, `HelloRequest`.
-- **`service`**: Defines the *methods* or *functions* you can call. It's like a class or an API endpoint. For example, `Greeter`.
+- **`message`**: Defines the *data structure*. It's like a TypeScript `interface` or a class. For example, `HelloRequest` (found in `proto/greeter.proto`).
+- **`service`**: Defines the *methods* or *functions* you can call. It's like a class or an API endpoint. For example, `Greeter` (defined in `proto/greeter.proto` and implemented in `src/server.ts`).
 
 ### **Q: Why is gRPC not human-readable?**
 **A**: It sends data as "Protocol Buffers," which is a binary format. It's a stream of ones and zeros, not text. This is a key reason it's so fast, but it means you can't easily inspect the data on the network without special tools.
