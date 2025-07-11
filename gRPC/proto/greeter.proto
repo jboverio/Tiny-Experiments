@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package greeter;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1; /* Field number 1 - Protocol Buffers use field numbers for efficient binary encoding; Sending the number 1 (1 byte) instead of the string "name" (4 bytes) makes messages smaller and faster to transmit over networks.
+  That's the core reason Protocol Buffers exists - speed and efficiency. */
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1; // Field number 1 - Protocol Buffers use field numbers for efficient binary encoding
+} 

@@ -1,0 +1,28 @@
+{
+  "name": "grpc-didactic-example",
+  "version": "1.0.0",
+  "description": "A didactic gRPC API example",
+  "main": "src/server.ts",
+  "type": "module",
+  "scripts": {
+    "start:server": "nodemon --exec \"node --import tsx src/server.ts\"",
+    "start:client": "node --import tsx src/client.ts"
+  },
+  "keywords": [
+    "grpc",
+    "typescript",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.13.4",
+    "@grpc/proto-loader": "^0.7.15"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.13",
+    "nodemon": "^3.1.10",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}
